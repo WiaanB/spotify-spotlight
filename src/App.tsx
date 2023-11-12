@@ -15,7 +15,7 @@ const App = () => {
             <Route element={<ProtectedRoute />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/compare" element={<Compare />} />
-                <Route path="/explore" element={<Explorer />} />
+                <Route path="/explorer" element={<Explorer />} />
             </Route>
         </Routes>
     </BrowserRouter>
