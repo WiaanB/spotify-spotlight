@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
           <details className="dropdown dropdown-end">
             <summary className="btn btn-circle">
               <div className="avatar">
-                <div className="w-24 rounded-full ring ring-green-400 ring-offset-base-100 ring-offset-2 h-12 w-12">
+                <div className="rounded-full ring ring-green-400 ring-offset-base-100 ring-offset-2 h-12 w-12">
                   <img src={user.images[0].url} />
                 </div>
               </div>
