@@ -15,7 +15,7 @@ const Login = () => {
     }).then(async (res) => {
       localStorage.setItem('user', JSON.stringify(pick(res.data, ['id', 'display_name', 'country', 'product', 'images'])));
       setLoading(false);
-      navigate('/')
+      navigate('/?welcome=true')
     });
   }
 
