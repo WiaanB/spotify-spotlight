@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 border-2">
+    <div className="navbar bg-base-100 h-[10vh]">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">Spotlight</Link>
       </div>
