@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="navbar bg-base-100 border-2">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">Spotlight</a>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">Spotlight</Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 items-center space-x-4">
