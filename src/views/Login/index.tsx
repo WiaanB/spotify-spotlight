@@ -11,7 +11,7 @@ const Login = () => {
     setLoading(true);
     axios({
       method: 'get',
-      url: 'http://localhost:8080/me',
+      url: 'http://localhost:8080/users/me',
     }).then(async (res) => {
       localStorage.setItem('user', JSON.stringify(pick(res.data, ['id', 'display_name', 'country', 'product', 'images'])));
       setLoading(false);
