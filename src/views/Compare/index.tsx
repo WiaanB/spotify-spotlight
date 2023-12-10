@@ -8,13 +8,14 @@ import ResultView from './result-view';
 const Compare: React.FC = () => {
     const [content, setContent] = useState<React.ReactNode>(<></>);
     const [step, setStep] = useState<number>(0);
+    const [playlists, setPlaylists] = useState<string[]>([]);
 
     const stepOptions = ["Pick Playlists", "Select Options", "Enjoy"];
 
     useEffect(() => {
         switch (step) {
             case 0:
-                setContent(<PlaylistPicker />);
+                setContent(<PlaylistPicker playlists={playlists} onChange={setPlaylists} />);
                 break;
             case 1:
                 setContent(<Options />);
@@ -23,7 +24,7 @@ const Compare: React.FC = () => {
                 setContent(<ResultView />);
                 break;
         }
-    }, [step])
+    }, [step, playlists])
 
     function handleStep(step: number) {
         setStep(s => s + step);
