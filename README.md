@@ -3,7 +3,7 @@
 ### Prerequisites
 
 - `npm` or `yarn`
-- The [Spotipy API](https://github.com/WiaanB/hono-app)
+- The [Spotipy API](https://github.com/WiaanB/spotipy-api)
 
 ### Installation
 
