@@ -1,22 +1,25 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { pick } from 'lodash'
+import { useSpotify } from '@/hooks/useSpotify'
+import { Scopes } from '@spotify/web-api-ts-sdk'
+import { pick } from 'lodash';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const sdk = useSpotify(
+    String(import.meta.env.VITE_SPOTIFY_CLIENT_ID), 
+    String(import.meta.env.VITE_REDIRECT_TARGET), 
+    Scopes.userDetails
+  );
 
-  function handleMe() {
+  async function handleMe() {
     setLoading(true);
-    axios({
-      method: 'get',
-      url: 'http://localhost:8080/users/me',
-    }).then(async (res) => {
-      localStorage.setItem('user', JSON.stringify(pick(res.data, ['id', 'display_name', 'country', 'product', 'images'])));
-      setLoading(false);
-      navigate('/?welcome=true')
-    });
+    if (!sdk) return setLoading(false);
+    const user = await sdk.currentUser.profile();
+    setLoading(false);
+    localStorage.setItem('user', JSON.stringify(pick(user, ['id', 'display_name', 'country', 'product', 'images'])));
+    navigate('/?welcome=true');
   }
 
   return (
