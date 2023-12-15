@@ -5,10 +5,12 @@ import PlaylistPicker from './playlist-picker';
 import Options from './options';
 import ResultView from './result-view';
 
+import { IPlaylist } from './types';
+
 const Compare: React.FC = () => {
     const [content, setContent] = useState<React.ReactNode>(<></>);
     const [step, setStep] = useState<number>(0);
-    const [playlists, setPlaylists] = useState<string[]>([]);
+    const [playlists, setPlaylists] = useState<IPlaylist[]>([]);
 
     const stepOptions = ["Pick Playlists", "Select Options", "Enjoy"];
 

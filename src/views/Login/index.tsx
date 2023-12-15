@@ -1,5 +1,4 @@
 import { useSpotify } from '@/hooks/useSpotify'
-import { Scopes } from '@spotify/web-api-ts-sdk'
 import { pick } from 'lodash';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,11 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const sdk = useSpotify(
-    String(import.meta.env.VITE_SPOTIFY_CLIENT_ID), 
-    String(import.meta.env.VITE_REDIRECT_TARGET), 
-    Scopes.userDetails
-  );
+  const sdk = useSpotify();
 
   async function handleMe() {
     setLoading(true);
@@ -29,7 +24,7 @@ const Login = () => {
           <h2 className="card-title">Welcome to Spotlight</h2>
           <p>Log in to get going!</p>
           <div className="card-actions justify-end">
-            <button className="btn bg-green-400 text-black hover:text-white w-24" onClick={handleMe}>
+            <button disabled={loading} className="btn bg-green-400 text-black hover:text-white w-24" onClick={handleMe}>
               { loading ? <span className="loading loading-spinner"></span> : 'Login'}
             </button>
           </div>
