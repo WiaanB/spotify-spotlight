@@ -5,14 +5,23 @@ import PlaylistPicker from './playlist-picker';
 import Options from './options';
 import ResultView from './result-view';
 
-import { IPlaylist } from './types';
+import { IPlaylist, ICompareOptions } from './types';
 
 const Compare: React.FC = () => {
     const [content, setContent] = useState<React.ReactNode>(<></>);
     const [step, setStep] = useState<number>(0);
     const [playlists, setPlaylists] = useState<IPlaylist[]>([]);
+    const [options, setOptions] = useState<ICompareOptions>({
+        total_tracks: true,
+        unique_artists: true,
+        most_popular_artist: true,
+        total_playback_duration: true,
+        followers: true
+    });
 
     const stepOptions = ["Pick Playlists", "Select Options", "Enjoy"];
+
+    useEffect(() => console.log(options), [options])
 
     useEffect(() => {
         switch (step) {
@@ -20,7 +29,7 @@ const Compare: React.FC = () => {
                 setContent(<PlaylistPicker playlists={playlists} onChange={setPlaylists} />);
                 break;
             case 1:
-                setContent(<Options />);
+                setContent(<Options options={options} onChange={setOptions} />);
                 break;
             case 2:
                 setContent(<ResultView />);
