@@ -30,7 +30,7 @@ const Compare: React.FC = () => {
                 setContent(<Options options={options} onChange={setOptions} />);
                 break;
             case 2:
-                setContent(<ResultView />);
+                setContent(<ResultView playlists={playlists} options={options} />);
                 break;
         }
     }, [step, playlists])
