@@ -21,8 +21,6 @@ const Compare: React.FC = () => {
 
     const stepOptions = ["Pick Playlists", "Select Options", "Enjoy"];
 
-    useEffect(() => console.log(options), [options])
-
     useEffect(() => {
         switch (step) {
             case 0:
@@ -53,7 +51,7 @@ const Compare: React.FC = () => {
                         return <li key={option} className={`step ${index <= step ? 'step-primary' : ''}`}>{option}</li>
                     })}
                 </ul>
-                <button className="btn text-white" disabled={step == (stepOptions.length - 1)} onClick={() => handleStep(1)}>
+                <button className="btn text-white" disabled={step == (stepOptions.length - 1) || playlists.length !== 2} onClick={() => handleStep(1)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
                 </button>
             </div>
