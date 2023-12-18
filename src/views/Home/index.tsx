@@ -8,8 +8,10 @@ import Navbar from '@/components/Navbar';
 const Home: React.FC = () => {
     const [searchParams] = useSearchParams();
     const [showToast, setShowToast] = useState(false);
-    const [toastMessage, setToastMessage] = useState('');
+    const [toastMessage, setToastMessage] = useState<string>('');
+    const [heroContent, setHeroContent] = useState<string>('Hover me');
     const user = useAuth();
+
     useEffect(() => {
         if (searchParams.get('welcome') === 'true') {
             setShowToast(true);
@@ -23,15 +25,26 @@ const Home: React.FC = () => {
         setShowToast(false);
     }
 
+    function handleHeroContent(type: string) {
+        if (type === 'hover') setHeroContent('Hover Me');
+        else setHeroContent('In molestie scelerisque massa, quis finibus nibh iaculis id. Proin laoreet purus nec ante facilisis fermentum. Phasellus lacinia, est nec mattis varius, nisi urna sagittis neque, eu rutrum mauris lacus vitae libero.');
+    }
+
     return (
         <div>
             <Navbar />
             <div className="hero h-[90vh]" style={{ backgroundImage: "url('src/assets/spotify.jpeg')" }}>
                 <div className="hero-overlay bg-opacity-40"></div>
-                <div className="hero-content text-center text-neutral-content">
+                <div
+                    className="hero-content text-center text-neutral-content"
+                    onMouseEnter={() => handleHeroContent('lorem')}
+                    onMouseLeave={() => handleHeroContent('hover')}
+                >
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="mb-5 min-h-[100px]">
+                            {heroContent}
+                        </p>
                     </div>
                 </div>
             </div>
