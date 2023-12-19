@@ -34,9 +34,9 @@ const Home: React.FC = () => {
         <div>
             <Navbar />
             <div className="hero h-[90vh]" style={{ backgroundImage: "url('src/assets/spotify.jpeg')" }}>
-                <div className="hero-overlay bg-opacity-40"></div>
+                <div className="hero-overlay bg-opacity-20"></div>
                 <div
-                    className="hero-content text-center text-neutral-content"
+                    className="hero-content text-center text-neutral-content bg-opacity-20 hover:bg-opacity-70 hover:bg-slate-800 rounded-3xl hover:backdrop-blur-lg hover:decoration-white"
                     onMouseEnter={() => handleHeroContent('lorem')}
                     onMouseLeave={() => handleHeroContent('hover')}
                 >
