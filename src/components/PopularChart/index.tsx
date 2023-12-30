@@ -43,7 +43,7 @@ const PopularArtistChart: React.FC<IPopularChartProps> = ({ data }) => {
         <YAxis />
         <Legend />
         <Tooltip />
-        <Bar dataKey="count" fill="#8884d8" />
+        <Bar dataKey="count" fill="#4ade80" />
       </BarChart>
 }
 
