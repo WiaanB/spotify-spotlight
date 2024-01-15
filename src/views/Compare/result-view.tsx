@@ -60,11 +60,11 @@ const ResultView: React.FC<IResultViewProps> = ({ playlists }) => {
     useEffect(() => {
         if (results.length === 2) {
             setLoading(false);
-            setSelectedPlaylist([results[1]]);
+            setSelectedPlaylist([results[1]]); // single playlist for testing purposes
         }
     }, [results])
 
-    const displayTemplate = (title: string, value: number, tagline: string) => (
+    const statDisplay = (title: string, value: number, tagline: string) => (
         <div className="stats shadow">
             <div className="stat">
                 <div className="stat-title">{title}</div>
@@ -79,19 +79,19 @@ const ResultView: React.FC<IResultViewProps> = ({ playlists }) => {
             <div className="flex flex-col">
                 <h1>Followers:</h1>
                 <div className="flex">
-                    {selectedPlaylist.map((playlist: IResult) => displayTemplate(playlist.title, playlist.followers, "total followers"))}
+                    {selectedPlaylist.map((playlist: IResult) => statDisplay(playlist.title, playlist.followers, "total followers"))}
                 </div>
             </div>
             <div className="flex flex-col">
                 <h1>Total Tracks:</h1>
                 <div className="flex">
-                    {selectedPlaylist.map((playlist: IResult) => displayTemplate(playlist.title, playlist.total_tracks, "total tracks"))}
+                    {selectedPlaylist.map((playlist: IResult) => statDisplay(playlist.title, playlist.total_tracks, "total tracks"))}
                 </div>
             </div>
             <div className="flex flex-col">
                 <h1>Unique artists:</h1>
                 <div className="flex">
-                    {selectedPlaylist.map((playlist: IResult) => displayTemplate(playlist.title, Object.keys(playlist.most_popular_artists).length, "unique artists features"))}
+                    {selectedPlaylist.map((playlist: IResult) => statDisplay(playlist.title, Object.keys(playlist.most_popular_artists).length, "unique artists features"))}
                 </div>
             </div>
             <div className="flex flex-col">
@@ -103,7 +103,7 @@ const ResultView: React.FC<IResultViewProps> = ({ playlists }) => {
             <div className="flex flex-col">
                 <h1>Duration:</h1>
                 <div className="flex">
-                    {selectedPlaylist.map((playlist: IResult) => displayTemplate(playlist.title, playlist.playlist_duration, "total playtime"))}
+                    {selectedPlaylist.map((playlist: IResult) => statDisplay(playlist.title, playlist.playlist_duration, "total playtime"))}
                 </div>
             </div>
         </div>}
